@@ -1,0 +1,28 @@
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Partners
+                <small>Have a look at our close partners before finishing:</small>
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Projects Row -->
+    <div class="row">
+        <div class="col-md-6 portfolio-item" ng-repeat="offer in wall.offers | orderBy : 'index' | filter: activeOfferFilter ">
+            <a href="{{offer.offer.redirectUrl}}" target="_blank">
+                <img class="img-responsive" src="{{offer.offer.imageUrl}}" alt="">
+            </a>
+            <h3>
+                <a href="{{offer.offer.redirectUrl}}" target="_blank">{{offer.offer.header}}</a>
+            </h3>
+            <p>{{offer.offer.body}}</p>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr></div>

@@ -1,0 +1,35 @@
+<div class="col-lg-8 text-center">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Create a Co-Reg Path
+        </div>
+        <div class="panel-body">
+            <form role="form">
+                <div class="form-group">
+                    <label>Path Name</label>
+                    <input class="form-control" placeholder="Path Name" ng-model="path.path.name">
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" ng-model="path.path.status">
+                        <option>Active</option>
+                        <option>Pause</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default" ng-click="addPage()">Add a Page</button>
+                </div>
+
+                <div id="pagePlaceholder">
+                    <create-path-page ng-repeat="page in path.path.pages"
+                                      path="path" page="page" offer-groups="offerGroups"></create-path-page>
+                </div>
+
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-default" ng-click="saveOrUpdatePath(path)">Save</button>
+            <button type="reset" class="btn btn-default" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="col-lg-8 text-center">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Create a New Offer
+        </div>
+        <div class="panel-body">
+            <form role="form" name="createOfferForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" placeholder="Offer Name" name="offerName" ng-model="offer.offer.name" required>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" ng-model="offer.offer.status">
+                        <option>Active</option>
+                        <option>Pause</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Redirect Url</label>
+                    <input class="form-control" placeholder="Offer Redirect Url" ng-model="offer.offer.redirectUrl" required>
+                </div>
+                <div class="form-group">
+                    <label>Image Url</label>
+                    <input class="form-control" placeholder="Offer Image Url" ng-model="offer.offer.imageUrl">
+                </div>
+                <div class="form-group">
+                    <label>Header</label>
+                    <input class="form-control" placeholder="Enter Header" ng-model="offer.offer.header" required>
+                </div>
+                <div class="form-group">
+                    <label>Body</label>
+                    <textarea class="form-control" rows="3" placeholder="Enter Description" ng-model="offer.offer.body" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-default"
+                        ng-click="saveOrUpdateOffer(offer)"
+                        ng-disabled="createOfferForm.$invalid">Save</button>
+                <button type="reset" class="btn btn-default" ng-click="cancel()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

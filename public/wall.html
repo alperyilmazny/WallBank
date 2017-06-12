@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="appRuntime">
+<head>
+    <meta charset="UTF-8">
+    <title>Wall</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/runtime/runtime.css" rel="stylesheet">
+
+    <!-- Angular dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.3/angular-route.js"></script>
+
+    <!-- Main app js and services -->
+    <script src="js/appRuntime.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/runtime/singleController.js"></script>
+    <script src="js/controllers/runtime/single1Controller.js"></script>
+    <script src="js/controllers/runtime/twoAcrossController.js"></script>
+    <script src="js/controllers/runtime/threeAcrossController.js"></script>
+    <script src="js/controllers/runtime/blogController.js"></script>
+</head>
+<body>
+<!-- Page Content -->
+<!--<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12 text-center" ng-view>
+        </div>
+    </div>
+    &lt;!&ndash; /.row &ndash;&gt;
+
+</div>-->
+
+<div ng-view></div>
+
+<!-- jQuery Version 1.11.1 -->
+<script src="js/libraries/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/libraries/bootstrap.min.js"></script>
+<script src="js/libraries/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script src="js/libraries/moment.js"></script>
+<script src="js/libraries/jquery.dataTables.min.js"></script>
+
+
+</body>
+</html>

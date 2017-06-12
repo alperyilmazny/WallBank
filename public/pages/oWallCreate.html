@@ -1,0 +1,70 @@
+<div class="col-lg-8 text-center">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Create a New Wall
+        </div>
+        <div class="panel-body">
+            <form role="form" name="createWallForm">
+                <div class="form">
+                    <label>Name</label>
+                    <input class="form-control" placeholder="Name" ng-model="wall.wall.name" required>
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select class="form-control" ng-model="wall.wall.status" required>
+                        <option>Active</option>
+                        <option>Pause</option>
+                    </select>
+                </div>
+                <button class="btn btn-default" ng-click="addOffer()">Add Offer</button>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Offer Name</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="of in wall.wall.offers | orderBy : 'index' ">
+                            <td><input ng-model=of.index></td>
+                            <td>{{of.offer.name}}</td>
+                            <td><button type="button" class="btn btn-default" ng-click="removeOffer(of)">Remove</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel panel-info" ng-hide="!currentOffer">
+                    <div class="panel-heading">Adding an offer</div>
+                    <div class="panel-body">
+                        <div class="form">
+                            <label>Ranking</label>
+                            <input class="form-control" placeholder="Ranking" ng-model="currentOffer.index">
+                        </div>
+                        <div class="form-group">
+                            <label>Select an offer</label>
+                            <div class="input-group">
+                                <input type="text" ng-model="currentOffer.offer"
+                                       uib-typeahead="ofr as ofr.offer.name for ofr in offers | filter:$viewValue"
+                                       class="form-control ng-valid ng-touched ng-dirty ng-valid-parse ng-empty"
+                                       aria-autocomplete="list" aria-expanded="false" aria-owns="typeahead-80-4546"
+                                       placeholder="Offer name..."
+                                       id="saveOfferInput">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"
+                                    ng-click="saveOffer(currentOffer)" ng-disabled=!currentOffer>Save Offer</button>
+                          </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-default"
+                        ng-click="saveOrUpdateWall(wall)" ng-disabled="createWallForm.$invalid">Save</button>
+                <button type="reset" class="btn btn-default" ng-click="cancel()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

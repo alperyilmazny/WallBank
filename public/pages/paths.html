@@ -1,0 +1,27 @@
+<button type="button" class="btn btn-default" ng-click="go('/createPath')">Create a new co-reg path</button>
+
+<div class="panel-body">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Status</th>
+                <th>Name
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="path in paths">
+                <td>{{path.path.status}}</td>
+                <td>{{path.path.name}}</td>
+                <td><button type="button" class="btn btn-default" id="editPathButton"
+                            ng-click="go('/createPath/' + path._id)">Edit</button></td>
+                <td><button type="button" class="btn btn-default" id="viewPathButton"
+                            ng-click="go('/pathRuntime/' + path._id)">View</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>

@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><button type="button" class="btn btn-primary" ng-click="go('/createOffer')">Create a new offer</button></div>
+    <div class="alert alert-danger" role="alert" ng-if="hasError">Error fecthing data from DB.</div>
+    <table class="table table-striped" ng-if="!hasOffer">
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Name
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="offer in offers">
+            <td>{{offer.offer.status}}</td>
+            <td>{{offer.offer.name}}</td>
+            <td><button type="button" class="btn btn-default" id="editOfferButton"
+                        ng-click="go('/createOffer/' + offer._id)">Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
