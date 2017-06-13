@@ -106,9 +106,7 @@ app.controller('oWallCreateController', ['$rootScope', '$scope', '$routeParams',
             $scope.currentOffer = {
                 '_id' : null,
                 'index' : $scope.wall.wall.offers.length + 1,
-                'offer' : {
-                    'name' : null,
-                }
+                'offer' : null
             };
         };
 

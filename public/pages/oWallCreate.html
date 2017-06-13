@@ -27,7 +27,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="of in wall.wall.offers | orderBy : 'index' ">
+                        <tr ng-repeat="of in wall.wall.offers | orderBy : 'index*1' ">
                             <td><input ng-model=of.index></td>
                             <td>{{of.offer.name}}</td>
                             <td><button type="button" class="btn btn-default" ng-click="removeOffer(of)">Remove</button></td>

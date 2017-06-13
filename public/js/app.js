@@ -43,14 +43,3 @@ app.config(function ($routeProvider) {
             controller: 'oWallCreateController'
         })
 });
-
-
-
-
-
-
-
-
-
-
-
