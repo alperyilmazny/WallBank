@@ -72,28 +72,11 @@ app.controller('oWallCreateController', ['$rootScope', '$scope', '$routeParams',
                     $scope.wall.wall.offers = data.wall.offers;
                     $scope.wall.wall.offerIds = data.wall.offerIds;
                     $scope.wall._id = data._id;
-                    //$scope.findWallOffersByIds($scope.wall.wall);
                 })
                 .error(function(data) {
                     console.log('Error: ' + data);
                 });
         };
-
-        /*$scope.findWallOffersByIds = function(wall){
-            /!*var ids = [];
-            offers.forEach(function(offer){
-                ids.push(offer._id);
-            })*!/
-
-            $http.get('/api/findOffersByIds', { params: {'offer_ids' : wall.offerIds}})
-                .success(function(data) {
-                    $scope.offersNew = data;
-                })
-                .error(function(data) {
-                    console.log('Error: ' + data);
-                });
-
-        };*/
 
         $scope.saveOffer = function(selectedOffer){
             $scope.wall.wall.offers.push({
@@ -122,7 +105,7 @@ app.controller('oWallCreateController', ['$rootScope', '$scope', '$routeParams',
         $scope.addOffer = function(){
             $scope.currentOffer = {
                 '_id' : null,
-                'index' : null,
+                'index' : $scope.wall.wall.offers.length + 1,
                 'offer' : {
                     'name' : null,
                 }
@@ -130,7 +113,5 @@ app.controller('oWallCreateController', ['$rootScope', '$scope', '$routeParams',
         };
 
         $scope.init();
-
-
 
     }]);

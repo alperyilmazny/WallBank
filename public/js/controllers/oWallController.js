@@ -6,7 +6,6 @@ app.controller('oWallController', ['$rootScope', '$scope', '$http', '$log', '$wi
         };
 
         $scope.preview = function(displayStyle, wallId){
-
             var domain = "http://localhost:9090";
             var url = domain + "/wall#/" + displayStyle + "/" + wallId;
             $window.open(url, "_blank");
