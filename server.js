@@ -29,28 +29,6 @@ console.log("App listening on port " + port);
 var Offer = require('./app/models/offer');
 var Wall = require('./app/models/wall');
 
-/*var Offer = mongoose.model('Offer', {
-    offer : {
-        id : String,
-        status : String,
-        name : String,
-        header : String,
-        body : String,
-        redirectUrl : String,
-        imageUrl : String
-    }
-});
-
-var Wall = mongoose.model('Wall' , {
-    wall : {
-        id : String,
-        status : String,
-        name : String,
-        offers : [],
-        offerIds : []
-    }
-});*/
-
 
 // ROUTES ===================================================================
 // APIs ---------------------------------------------------------------------

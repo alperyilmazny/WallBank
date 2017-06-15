@@ -12,9 +12,4 @@ module.exports = function (app) {
         // Load the single view file (angular will handle the page changes on the front-end)
         res.sendfile('./public/index.html');
     });
-
-    app.get('/login', function (req, res) {
-        res.sendfile('./public/login.html');
-    });
-
 };
