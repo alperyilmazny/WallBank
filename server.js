@@ -7,6 +7,10 @@ var morgan = require('morgan');                         // log requests to the c
 var bodyParser = require('body-parser');                // pull information from HTML POST (express4)
 var methodOverride = require('method-override');        // simulate DELETE and PUT (express4)
 
+/*// Cache
+var apicache = require('apicache');
+var cache = apicache.middleware;*/
+
 var configDB = require('./config/database.js');
 
 // Configuration =================
@@ -141,13 +145,18 @@ app.post('/api/walls/update', function(req, res) {
         Wall.find(function(err, walls) {
             if (err)
                 return res.send(err);
+
+            /*var cacheKey = "wallId_" + req.body._id;
+            console.log("Removing cache");
+            console.log("cache key", cacheKey);
+            apicache.clear(cacheKey);*/
             res.json(walls);
         });
     });
 });
 
 app.get('/api/findWall', function(req, res) {
-
+/*app.get('/api/findWall', cache('5 minutes'), function(req, res) {*/
     var wall_id = req.param('wall_id');
 
     // use mongoose to get specific wall in the database
@@ -172,6 +181,11 @@ app.get('/api/findWall', function(req, res) {
                 s.offer.body = o.offer.body;
             }
 
+            /*var cacheKey = "wallId_" + wall_id;
+            console.log("Adding cache");
+            console.log("cache key", cacheKey);
+            req.apicacheGroup = cacheKey;
+            console.log("apicacheGroup", req.apicacheGroup);*/
             res.json(wall);
         });
     });
