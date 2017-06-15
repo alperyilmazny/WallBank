@@ -1,4 +1,4 @@
-// set up ========================
+// Set up ========================
 var express  = require('express');
 var app      = express();                               // create our app w/ express
 var port     = process.env.PORT || 9090;
@@ -9,9 +9,8 @@ var methodOverride = require('method-override');        // simulate DELETE and P
 
 var configDB = require('./config/database.js');
 
-// configuration =================
+// Configuration =================
 mongoose.connect(configDB.url); // connect to mongoDB database
-/*mongoose.connect("mongodb://stfal:Besiktas1903~@ds155160.mlab.com:55160/pascalnouma"); // connect to mongoDB database*/
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -20,12 +19,12 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-// launch (start app with node server.js) ======================================
+// Launch (start app with node server.js) ======================================
 app.listen(port);
 console.log("App listening on port " + port);
 
 
-// define model =================
+// Define model =================
 var Offer = require('./app/models/offer');
 var Wall = require('./app/models/wall');
 
@@ -155,14 +154,10 @@ app.get('/api/findWall', function(req, res) {
     Wall.findById({_id : wall_id}, function(err, wall) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err)
-            return res.send(err);
-
-        //res.json(wall);
+        if (err) return res.send(err);
 
         Offer.find({_id : { $in : wall.wall.offerIds}}, function(err, offers) {
-            if (err)
-                return res.send(err);
+            if (err) return res.send(err);
 
 
             for (var s of wall.wall.offers){
@@ -175,34 +170,15 @@ app.get('/api/findWall', function(req, res) {
                 s.offer.imageUrl = o.offer.imageUrl;
                 s.offer.header = o.offer.header;
                 s.offer.body = o.offer.body;
-                console.log(s);
             }
-
-            /*wall.wall.offers.forEach(function(wallOffer){
-                console.log(wallOffer._id);
-            });*/
 
             res.json(wall);
         });
     });
 });
 
-// routes ======================================================================
+// Routes ======================================================================
 require('./app/routes.js')(app);
-
-/*app.get('/wall*', function (req, res) {
-    // Load the single view file (angular will handle the page changes on the front-end)
-    res.sendfile('./public/wall.html');
-});
-
-app.get('*', function (req, res) {
-    // Load the single view file (angular will handle the page changes on the front-end)
-    res.sendfile('./public/index.html');
-});
-
-app.get('/login', function (req, res) {
-    res.sendfile('./public/login.html');
-});*/
 
 // expose app
 exports = module.exports = app;
