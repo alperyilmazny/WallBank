@@ -8,7 +8,7 @@
         </div>
     </div>
     <!-- /.row -->
-    <div ng-repeat="offer in wall.offers | orderBy : 'index' | filter: activeOfferFilter ">
+    <div ng-repeat="offer in wall.offers | orderBy : 'index*1' | filter: activeOfferFilter ">
         <!-- Project One -->
         <div class="row" >
             <div class="col-md-3">

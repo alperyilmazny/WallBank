@@ -10,7 +10,7 @@
                 Page Heading
                 <small>Secondary Text</small>
             </h1>
-            <div ng-repeat="offer in wall.offers | orderBy : 'index' | filter: activeOfferFilter ">
+            <div ng-repeat="offer in wall.offers | orderBy : 'index*1' | filter: activeOfferFilter ">
             <!-- First Blog Post -->
             <h2>
                 <a href="{{offer.offer.redirectUrl}}">{{offer.offer.header}}</a>
