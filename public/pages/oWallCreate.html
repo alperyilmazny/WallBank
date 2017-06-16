@@ -1,5 +1,9 @@
 <div class="col-lg-8 text-center">
-    <div class="panel panel-primary">
+    <loader ng-if="isLoading"></loader>
+    <div class="alert alert-danger" ng-if="errors.length > 0">
+        <p class="text-danger" ng-repeat="error in errors">{{error}}</p>
+    </div>
+    <div class="panel panel-primary" ng-if="!isLoading">
         <div class="panel-heading">
             Create a New Wall
         </div>
@@ -59,8 +63,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <button type="submit" class="btn btn-default"
                         ng-click="saveOrUpdateWall(wall)" ng-disabled="createWallForm.$invalid">Save</button>
                 <button type="reset" class="btn btn-default" ng-click="cancel()">Cancel</button>

@@ -6,13 +6,16 @@ app.controller('offersController', ['$scope', '$http', '$log', 'locationService'
         };
 
         $scope.getOffer = function() {
+
             // Get offers from db
             $http.get('/api/offers')
                 .success(function(data) {
                     // Remove existing data table
                     dataTableService.destroyDataTable('#offerTable');
+
                     // Update scope offers
                     $scope.offers = data;
+
                     // Create a new data table
                     dataTableService.setDataTable('#offerTable');
                 })
