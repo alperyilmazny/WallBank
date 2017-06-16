@@ -7,7 +7,8 @@ app.controller('oWallController', ['$scope', '$http', '$log', '$window', 'locati
 
         $scope.preview = function(displayStyle, wallId) {
             // Site domain
-            var domain = "http://localhost:9090";
+            //var domain = "http://localhost:9090";
+            var domain = "http://amazing-options.com";
 
             // Calculate preview url and open it in the new window
             var url = domain + "/wall#/" + displayStyle + "/" + wallId;

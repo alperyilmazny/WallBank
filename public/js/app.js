@@ -3,43 +3,43 @@ var app = angular.module('app', ['ngRoute', 'ui.bootstrap']);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'pages/oWall.html',
+            templateUrl: 'pages/admin/oWall.html',
             controller: 'oWallController'
         })
         .when('/offers', {
-            templateUrl: 'pages/offers.html',
+            templateUrl: 'pages/admin/offers.html',
             controller: 'offersController'
         })
         .when('/createOffer', {
-            templateUrl: 'pages/createOffer.html',
+            templateUrl: 'pages/admin/createOffer.html',
             controller: 'createOfferController'
         })
         .when('/createOffer/:offerId', {
-            templateUrl: 'pages/createOffer.html',
+            templateUrl: 'pages/admin/createOffer.html',
             controller: 'createOfferController'
         })
         .when('/paths', {
-            templateUrl: 'pages/paths.html',
+            templateUrl: 'pages/admin/paths.html',
             controller: 'pathsController'
         })
         .when('/createPath', {
-            templateUrl: 'pages/createPath.html',
+            templateUrl: 'pages/admin/createPath.html',
             controller: 'createPathController'
         })
         .when('/createPath/:pathId', {
-            templateUrl: 'pages/createPath.html',
+            templateUrl: 'pages/admin/createPath.html',
             controller: 'createPathController'
         })
         .when('/oWall', {
-            templateUrl: 'pages/oWall.html',
+            templateUrl: 'pages/admin/oWall.html',
             controller: 'oWallController'
         })
         .when('/oWallCreate', {
-            templateUrl: 'pages/oWallCreate.html',
+            templateUrl: 'pages/admin/oWallCreate.html',
             controller: 'oWallCreateController'
         })
         .when('/oWallCreate/:wallId', {
-            templateUrl: 'pages/oWallCreate.html',
+            templateUrl: 'pages/admin/oWallCreate.html',
             controller: 'oWallCreateController'
         })
 });
