@@ -1,12 +1,16 @@
-<div class="panel panel-default">
+<div class="col-lg-8 text-center">
+    <loader ng-if="isLoading"></loader>
+    <div class="alert alert-danger" ng-if="errors.length > 0">
+        <p class="text-danger" ng-repeat="error in errors">{{error}}</p>
+    </div>
+    <div class="panel panel-default" ng-if="!isLoading">
     <div class="panel-heading">
         <button type="button"
                 class="btn btn-primary"
                 ng-click="go('/createOffer')">Create a new offer
         </button>
     </div>
-    <div class="alert alert-danger" role="alert" ng-if="hasError">Error fecthing data from DB.</div>
-    <table class="table table-striped" ng-if="!hasOffer" id="offerTable">
+    <table class="table table-striped" ng-if="errors.length == 0 || isLoading" id="offerTable">
         <thead>
         <tr>
             <th>Status</th>
@@ -27,4 +31,5 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>

@@ -9,6 +9,6 @@ app.service('dataTableService', function(){
                 "responsive": true,
                 "iDisplayLength": 50
             });
-        }, 300);
+        }, 350);
     }
 });

@@ -1,5 +1,5 @@
-app.controller('createOfferController', ['$rootScope', '$scope', '$routeParams', '$http', '$log', 'locationService',
-    function ($rootScope, $scope, $routeParams, $http, $log, locationService) {
+app.controller('createOfferController', ['$scope', '$routeParams', '$http', '$log', 'locationService',
+    function ($scope, $routeParams, $http, $log, locationService) {
 
         const updateOffer = (data) => {
             $scope.offer.offer.name = data.offer.name;
@@ -18,7 +18,10 @@ app.controller('createOfferController', ['$rootScope', '$scope', '$routeParams',
                     updateOffer(data);
                 })
                 .error(function(data) {
-                    console.log('Error: ' + data);
+                    $log.log('Error: ' + data);
+                    if (data.length > 0){
+                        $scope.errors.push(data.length);
+                    }
                 });
             $scope.isLoading = false;
         };
@@ -36,7 +39,10 @@ app.controller('createOfferController', ['$rootScope', '$scope', '$routeParams',
                         locationService.redirect('/offers');
                     })
                     .error(function(data) {
-                        console.log('Error: ' + data);
+                        $log.log('Error: ' + data);
+                        if (data.length > 0){
+                            $scope.errors.push(data.length);
+                        }
                     });
             }
             else {
@@ -49,6 +55,9 @@ app.controller('createOfferController', ['$rootScope', '$scope', '$routeParams',
                     })
                     .error(function(data) {
                         console.log('Error: ' + data);
+                        if (data.length > 0){
+                            $scope.errors.push(data.length);
+                        }
                     });
             }
 
@@ -75,7 +84,7 @@ app.controller('createOfferController', ['$rootScope', '$scope', '$routeParams',
             // Get offer id from query parameter
             $scope.offerId = $routeParams.offerId;
 
-            ($scope.offerId !=null && $scope.offerId.length > 1)
+            $scope.offerId !=null && $scope.offerId.length > 1
                 ? $scope.findOfferById($scope.offerId)
                 : $scope.isLoading = false;
         };
