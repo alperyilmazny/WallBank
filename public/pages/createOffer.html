@@ -1,5 +1,9 @@
 <div class="col-lg-8 text-center">
-    <div class="panel panel-primary">
+    <loader ng-if="isLoading"></loader>
+    <div class="alert alert-danger" ng-if="errors.length > 0">
+        <p class="text-danger" ng-repeat="error in errors">{{error}}</p>
+    </div>
+    <div class="panel panel-primary" ng-if="!isLoading">
         <div class="panel-heading">
             Create a New Offer
         </div>
