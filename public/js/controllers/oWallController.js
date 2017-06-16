@@ -1,5 +1,5 @@
-app.controller('oWallController', ['$rootScope', '$scope', '$http', '$log', '$window', 'locationService',
-    function ($rootScope, $scope, $http, $log, $window, locationService) {
+app.controller('oWallController', ['$rootScope', '$scope', '$http', '$log', '$window', 'locationService', 'dataTableService',
+    function ($rootScope, $scope, $http, $log, $window, locationService, dataTableService) {
 
         $scope.go = function(path){
             locationService.redirect(path);
@@ -14,8 +14,12 @@ app.controller('oWallController', ['$rootScope', '$scope', '$http', '$log', '$wi
         // Get paths from db
         $http.get('/api/walls')
             .success(function(data) {
-                // Update scope
+                // Removing existing data layer to refresh new wall items
+                dataTableService.destroyDataTable('#offerWallTable');
+                // Updating scope for wall items
                 $scope.walls = data;
+                // Creating data layer for wall items
+                dataTableService.setDataTable('#offerWallTable');
             })
             .error(function(data) {
                 $scope.hasError = true;

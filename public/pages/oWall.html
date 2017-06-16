@@ -5,7 +5,7 @@
     <div class="alert alert-danger" role="alert" ng-if="hasError">Error fecthing data from DB.</div>
 
     <!-- Table -->
-    <table class="table table-striped" ng-if="!hasError && walls && walls.length > 0">
+    <table class="table table-striped" ng-if="!hasError && walls && walls.length > 0" id="offerWallTable">
         <thead>
         <tr>
             <th>Id</th>
