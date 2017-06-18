@@ -1,11 +1,20 @@
-appRuntime.controller('twoAcrossController', ['$rootScope', '$scope', '$routeParams', '$http', '$log',
-    function ($rootScope, $scope, $routeParams, $http, $log) {
+appRuntime.controller('twoAcrossController', ['$rootScope', '$scope', '$routeParams', '$http',
+    function ($rootScope, $scope, $routeParams, $http) {
 
-        $scope.findWallById = function(wallId){
+        this.init = function(){
+            $scope.activeOfferFilter = function(offer){
+                return offer.offer.status === 'Active';
+            };
+
+            const wallId = $routeParams.wallId;
+
+            this.findWallById(wallId);
+        };
+
+        this.findWallById = function(wallId){
             $http.get('/api/findWall', { params: {'wall_id' : wallId}})
                 .success(function(data) {
                     $scope.wall = $scope.wall || {};
-
                     $scope.wall.name = data.wall.name;
                     $scope.wall.status = data.wall.status;
                     $scope.wall.offers = data.wall.offers;
@@ -16,12 +25,6 @@ appRuntime.controller('twoAcrossController', ['$rootScope', '$scope', '$routePar
                 });
         };
 
-        $scope.activeOfferFilter = function(offer){
-            return offer.offer.status === 'Active';
-        };
-
-        $scope.wallId = $routeParams.wallId;
-
-        $scope.findWallById($scope.wallId);
+        this.init();
 
     }]);

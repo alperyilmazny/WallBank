@@ -7,10 +7,6 @@ var morgan = require('morgan');                         // log requests to the c
 var bodyParser = require('body-parser');                // pull information from HTML POST (express4)
 var methodOverride = require('method-override');        // simulate DELETE and PUT (express4)
 
-/*// Cache
-var apicache = require('apicache');
-var cache = apicache.middleware;*/
-
 var configDB = require('./config/database.js');
 
 // Configuration =================
@@ -31,6 +27,7 @@ console.log("App listening on port " + port);
 // Define model =================
 var Offer = require('./app/models/offer');
 var Wall = require('./app/models/wall');
+
 
 
 // ROUTES ===================================================================
@@ -145,30 +142,25 @@ app.post('/api/walls/update', function(req, res) {
         Wall.find(function(err, walls) {
             if (err)
                 return res.send(err);
-
-            /*var cacheKey = "wallId_" + req.body._id;
-            console.log("Removing cache");
-            console.log("cache key", cacheKey);
-            apicache.clear(cacheKey);*/
             res.json(walls);
         });
     });
 });
 
 app.get('/api/findWall', function(req, res) {
-/*app.get('/api/findWall', cache('5 minutes'), function(req, res) {*/
+    // Get wall id from query param
     var wall_id = req.param('wall_id');
+
+    // Calculate cache key base on wall id
+    //var cacheKey = "wall_"+ wall_id;
 
     // use mongoose to get specific wall in the database
     Wall.findById({_id : wall_id}, function(err, wall) {
-
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) return res.send(err);
 
         Offer.find({_id : { $in : wall.wall.offerIds}}, function(err, offers) {
             if (err) return res.send(err);
-
-
             for (var s of wall.wall.offers){
                 var o = offers.find(function(offer){
                     return offer._id == s._id;
@@ -181,11 +173,6 @@ app.get('/api/findWall', function(req, res) {
                 s.offer.body = o.offer.body;
             }
 
-            /*var cacheKey = "wallId_" + wall_id;
-            console.log("Adding cache");
-            console.log("cache key", cacheKey);
-            req.apicacheGroup = cacheKey;
-            console.log("apicacheGroup", req.apicacheGroup);*/
             res.json(wall);
         });
     });
