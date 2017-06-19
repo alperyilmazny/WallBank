@@ -3,8 +3,8 @@ var appRuntime = angular.module('appRuntime', ['ngRoute', 'ui.bootstrap']);
 appRuntime.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'pages/runtime/single.html',
-            controller: 'singleController',
+            templateUrl: 'pages/runtime/default.html',
+            controller: 'defaultController',
             css: 'css/runtime/runtime.css'
         })
         .when('/single', {
