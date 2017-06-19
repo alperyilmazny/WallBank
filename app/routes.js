@@ -1,3 +1,6 @@
+var apicache  = require('apicache');
+var cache     = apicache.middleware;
+
 // Define model =================
 var Offer = require('../app/models/offer');
 var Wall = require('../app/models/wall');
@@ -71,15 +74,15 @@ module.exports = function (app) {
     // WALL APIs ===================================================================
     app.get('/api/walls', function(req, res) {
 
-     // use mongoose to get all walls in the database
-     Wall.find(function(err, walls) {
+         // use mongoose to get all walls in the database
+         Wall.find(function(err, walls) {
 
-     // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-     if (err)
-     return res.send(err);
+         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+         if (err)
+         return res.send(err);
 
-     res.json(walls); // return all offer walls in JSON format
-     });
+         res.json(walls); // return all offer walls in JSON format
+         });
      });
 
     // Create wall and send back all walls after creation
@@ -105,6 +108,9 @@ module.exports = function (app) {
     // Update wall
     app.post('/api/walls/update', function(req, res) {
         var query = { '_id' : req.body._id };
+
+        var cacheKey = "wall_"+ req.body._id;
+
         Wall.findOneAndUpdate(query, {$set : { wall : req.body.wall } }, { upsert : true }, function(err){
             if (err)
                 return res.send(500, { error: err });
@@ -113,17 +119,21 @@ module.exports = function (app) {
             Wall.find(function(err, walls) {
                 if (err)
                     return res.send(err);
+
+                apicache.clear(cacheKey)
+
                 res.json(walls);
             });
         });
     });
 
-    app.get('/api/findWall', function(req, res) {
+    app.get('/api/findWall', cache('10 minutes'), function(req, res) {
         // Get wall id from query param
         var wall_id = req.param('wall_id');
 
         // Calculate cache key base on wall id
-        //var cacheKey = "wall_"+ wall_id;
+        var cacheKey = "wall_"+ wall_id;
+        req.apicacheGroup = cacheKey;
 
         // use mongoose to get specific wall in the database
         Wall.findById({_id : wall_id}, function(err, wall) {

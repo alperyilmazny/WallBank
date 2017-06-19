@@ -7,9 +7,8 @@ var morgan = require('morgan');                         // log requests to the c
 var bodyParser = require('body-parser');                // pull information from HTML POST (express4)
 var methodOverride = require('method-override');        // simulate DELETE and PUT (express4)
 
-var configDB = require('./config/database.js');
-
 // Configuration =================
+var configDB = require('./config/database.js');
 mongoose.connect(configDB.url); // connect to mongoDB database
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
