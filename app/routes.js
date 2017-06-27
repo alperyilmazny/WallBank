@@ -1,10 +1,13 @@
-// Define model =================
+// Define model
 var Offer = require('../app/models/offer');
 var Wall = require('../app/models/wall');
 
 module.exports = function (app) {
 
+
     // OFFER APIs ===================================================================
+
+    // Get all offers
     app.get('/api/offers', function(req, res) { // Get all offers
 
         // use mongoose to get all offers in the database
@@ -18,6 +21,7 @@ module.exports = function (app) {
         });
     });
 
+    // Find a specific offer
     app.get('/api/find', function(req, res) { // Get offer by offer id
 
         var offer_id = req.param('offer_id');
@@ -68,7 +72,10 @@ module.exports = function (app) {
         });
     });
 
+
     // WALL APIs ===================================================================
+
+    // Get all wall items
     app.get('/api/walls', function(req, res) {
 
          // use mongoose to get all walls in the database
@@ -120,11 +127,12 @@ module.exports = function (app) {
         });
     });
 
+    // Find a specific wall
     app.get('/api/findWall', function(req, res) {
         // Get wall id from query param
         var wall_id = req.param('wall_id');
 
-        // use mongoose to get specific wall in the database
+        // Use mongoose to get specific wall in the database
         Wall.findById({_id : wall_id}, function(err, wall) {
             // if there is an error retrieving, send the error. nothing after res.send(err) will execute
             if (err) return res.send(err);
@@ -148,16 +156,20 @@ module.exports = function (app) {
         });
     });
 
-    // ROUTES ===================================================================
+
+
+    // ROUTES ======================================================================
+
+    // Runtime route
     app.get('/wall', function (req, res) {
         // Load the single view file (angular will handle the page changes on the front-end)
         res.sendfile('./public/wall.html');
     });
 
+    // Default route
     app.get('*', function (req, res) {
         // Load the single view file (angular will handle the page changes on the front-end)
         res.sendfile('./public/index.html');
     });
-
 
 };

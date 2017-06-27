@@ -18,18 +18,6 @@ app.config(function ($routeProvider) {
             templateUrl: 'pages/admin/createOffer.html',
             controller: 'createOfferController'
         })
-        .when('/paths', {
-            templateUrl: 'pages/admin/paths.html',
-            controller: 'pathsController'
-        })
-        .when('/createPath', {
-            templateUrl: 'pages/admin/createPath.html',
-            controller: 'createPathController'
-        })
-        .when('/createPath/:pathId', {
-            templateUrl: 'pages/admin/createPath.html',
-            controller: 'createPathController'
-        })
         .when('/oWall', {
             templateUrl: 'pages/admin/oWall.html',
             controller: 'oWallController'
