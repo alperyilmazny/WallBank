@@ -6,14 +6,18 @@ app.controller('oWallController', ['$scope', '$http', '$log', '$window', 'locati
         };
 
         $scope.preview = function(displayStyle, wallId) {
-            // Site domain
+            // Local
             var domain = "http://localhost:9090";
+
+            // Stating
             /*var domain = "http://amazing-options.com";*/
+
+            // Production
             /*var domain = "http://stage.ipernix.com:9090";*/
 
             // Calculate preview url and open it in the new window
             var url = domain + "/wall#/" + displayStyle + "/" + wallId;
-            //var url = domain + "/#/" + displayStyle + "/" + wallId;
+
             $window.open(url, "_blank");
         };
 

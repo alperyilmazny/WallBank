@@ -1,13 +1,10 @@
-// Define model
+// Define model =================
 var Offer = require('../app/models/offer');
 var Wall = require('../app/models/wall');
 
 module.exports = function (app) {
 
-
     // OFFER APIs ===================================================================
-
-    // Get all offers
     app.get('/api/offers', function(req, res) { // Get all offers
 
         // use mongoose to get all offers in the database

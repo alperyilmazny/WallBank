@@ -1,4 +1,4 @@
-appRuntime.controller('single1Controller', ['$rootScope', '$scope', '$routeParams', '$http',
+appRuntime.controller('runtimeController', ['$rootScope', '$scope', '$routeParams', '$http',
     function ($rootScope, $scope, $routeParams, $http) {
 
         this.init = function(){
