@@ -4,20 +4,6 @@
     background: #f6e0ae;
 }
 
-#single1Template #offerImg {
-    /*vertical-align: top;
-    display: inline-block;
-    height: 225px;
-    width: 276px;*/
-}
-
-#single1Template #offerDetail {
-    /*padding: 15px;
-    vertical-align: top;
-    display: inline-block;
-    max-width: 480px;*/
-}
-
 #single1Template #offers {
     padding: 20px 100px;
     background-color: #fffaec;

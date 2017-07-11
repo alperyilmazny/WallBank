@@ -1,5 +1,5 @@
 <!-- Page Content -->
-<div class="container">
+<div class="container" id="blogTemplate" ng-if="wall.status == 'Active' ">
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-8">
@@ -8,16 +8,15 @@
                 <small>Secondary Text</small>
             </h1>
             <div ng-repeat="offer in wall.offers | orderBy : 'index*1' | filter: activeOfferFilter ">
-            <!-- First Blog Post -->
-            <h2>
-                <a href="{{offer.offer.redirectUrl}}">{{offer.offer.header}}</a>
-            </h2>
-            <hr>
-            <img class="img-responsive" src="{{offer.offer.imageUrl}}" alt="">
-            <hr>
-            <p>{{offer.offer.body}}</p>
-            <a class="btn btn-primary" href="{{offer.offer.redirectUrl}}">See The Offer</a>
-
+                <!-- First Blog Post -->
+                <h2>
+                    <a href="{{offer.offer.redirectUrl}}">{{offer.offer.header}}</a>
+                </h2>
+                <hr>
+                <img class="img-responsive" src="{{offer.offer.imageUrl}}" alt="">
+                <hr>
+                <p>{{offer.offer.body}}</p>
+                <a class="btn btn-primary" href="{{offer.offer.redirectUrl}}">See The Offer</a>
             <hr>
             </div>
 

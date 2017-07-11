@@ -10,10 +10,10 @@ app.controller('oWallController', ['$scope', '$http', '$log', '$window', 'locati
             var domain = "http://localhost:9090";
 
             // Stating
-            /*var domain = "http://amazing-options.com";*/
+            /*var domain = "http://stage.ipernix.com:9090";*/
 
             // Production
-            /*var domain = "http://stage.ipernix.com:9090";*/
+            //var domain = "http://amazing-options.com";
 
             // Calculate preview url and open it in the new window
             var url = domain + "/wall#/" + displayStyle + "/" + wallId;
